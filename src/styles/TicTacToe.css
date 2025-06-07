@@ -1,0 +1,31 @@
+.page {
+    text-align: center;
+    min-height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 40px;
+}
+.container > button {
+  background-color: #8d8102;
+  border: 1px solid black;
+  padding: 40px;
+  margin: 2px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.container > button:active {
+    background-color: #7d7202;
+}
+
+.normal-text {
+    color: white;
+}
+
+.selection > button {
+    margin-right: 8px;
+    background-color: #908d82;
+}
