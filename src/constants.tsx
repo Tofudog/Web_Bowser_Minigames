@@ -2,10 +2,10 @@ const BOWSER_MESSAGES = [
     "BWAAAHAAAAHAAAAA!!!"
 ];
 
-const SEASHELL_IMAGE = "./styles/images/seashell2.png";
-const CONE_IMAGE = "./styles/images/cone222.png";
-const NEON_CIRLE_IMAGE = "./styles.images/neon_circle.png";
-const NEON_X_IMAGE = "./styles.images/neon_X.png";
+const SEASHELL_IMAGE = "./images/seashell.png";
+const CONE_IMAGE = "./images/cone.png";
+const NEON_CIRLE_IMAGE = "./images/neon_circle.png";
+const NEON_X_IMAGE = "./images/neon_X.png";
 
 const BOARD_MAP = new Map<string, string>([
     ["(X, neon)", NEON_X_IMAGE],

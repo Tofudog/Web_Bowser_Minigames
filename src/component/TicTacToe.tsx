@@ -2,6 +2,11 @@ import { useState } from "react";
 import "./../styles/TicTacToe.css";
 import { BOARD_MAP } from "../constants";
 
+type BoardProps = {
+    boardType: string;
+    setBoardType: React.Dispatch<React.SetStateAction<string>>;
+};
+
 function checkRows(grid: string[][]) {
     for (var i=0; i<3; i++) {
         if (grid[i][0] !== "" && grid[i][0] === grid[i][1] && grid[i][1] === grid[i][2]) {
@@ -33,7 +38,17 @@ function gameOver(grid: string[][]) {
     return checkRows(grid) || checkColumns(grid) || checkDiagonals(grid);
 }
 
-function Board() {
+function changeMarker(button: HTMLButtonElement, marker: string, boardType: string) {
+    if (boardType === "normal") {
+        button.innerHTML = marker;
+    } else {
+        const newImg = BOARD_MAP.get(`(${marker}, ${boardType})`);
+        button.innerHTML = `<img src="${newImg}" width="60" height="60" />`;
+        console.log(newImg);
+    }
+}
+
+function Board({boardType, setBoardType}: BoardProps) {
     const [turn, setTurn] = useState(false); //false is X, true is O
     const [grid, setGrid] = useState([
         ["", "", ""],
@@ -45,17 +60,14 @@ function Board() {
     const updateBoard = (event: React.MouseEvent<HTMLButtonElement>, rowNum: number, colNum: number) => {
         if (!done && grid[rowNum][colNum] === "") {
             const marker: string = (turn) ? "X" : "O";
-            console.log("Updating the board: ", marker);
             const button = event.target as HTMLButtonElement;
-            button.innerHTML = marker;
-            console.log(`(${rowNum}, ${colNum})`);
+            changeMarker(button, marker, boardType);
             setTurn(turn => !turn);
             let nextGrid: string[][] = grid;
             nextGrid[rowNum][colNum] = marker;
             setGrid(nextGrid);
             if (gameOver(grid)) {
                 setDone(true);
-                console.log(`${marker} WON!`);
                 const gameOverScreen = document.getElementById("game-over-screen");
                 if (gameOverScreen) {
                     gameOverScreen.innerText = `${marker} WON!`;
@@ -89,27 +101,12 @@ function Board() {
     );
 }
 
-function BoardSwitcher(curType: string, newType: string) {
+function BoardSwitcher(newBoardType: string, {boardType, setBoardType}: BoardProps) {
     /*
         Function to switch the board type.
         :Args: boardType = "Normal", "Neon", or "Shell"
     */
-    // for (var i=0; i<3; i++) {
-    //     for (var j=0; j<3; j++) {
-    //         const element = document.getElementById(`tic-tac-toe-(${i}, ${j})`);
-
-    //         if (element && element.innerText !== "") {
-    //             if (curType === "normal") {
-    //                 const curText = element.innerText;
-    //                 const newImg = BOARD_MAP.get(`(${curText}, ${newType})`);
-    //                 element.innerHTML = "<img src=`bowser1.png` />";
-
-    //             } else {
-
-    //             }
-    //         }
-    //     }
-    // }
+    setBoardType(newBoardType);
 }
 
 function TicTacToe() {
@@ -118,12 +115,13 @@ function TicTacToe() {
         <div className="page">
             <h1 className="normal-text">Bowser Tic Tac Toe</h1>
             <h2 id="game-over-screen"></h2>
-            <Board></Board>
+            <Board boardType={boardType} setBoardType={setBoardType} ></Board>
             <div className="selection">
-                <button onClick={() => BoardSwitcher(boardType, "normal")}>Normal</button>
-                <button onClick={() => BoardSwitcher(boardType, "neon")}>Neon</button>
-                <button onClick={() => BoardSwitcher(boardType, "shell")}>Shell</button>
+                <button onClick={() => BoardSwitcher("normal", {boardType, setBoardType})}>Normal</button>
+                <button onClick={() => BoardSwitcher("neon", {boardType, setBoardType})}>Neon</button>
+                <button onClick={() => BoardSwitcher("shell", {boardType, setBoardType})}>Shell</button>
             </div>
+            <br></br>
         </div>
     );
 };
