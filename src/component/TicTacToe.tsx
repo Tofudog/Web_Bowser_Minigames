@@ -57,15 +57,15 @@ function Board({boardType, setBoardType}: BoardProps) {
     return (
         <div>
             <div className="container">
-                <button id="tic-tac-toe-(0, 0)" onClick={(event) => updateBoard(event, 0, 0)}></button>
-                <button id="tic-tac-toe-(0, 1)" onClick={(event) => updateBoard(event, 0, 1)}></button>
-                <button id="tic-tac-toe-(0, 2)" onClick={(event) => updateBoard(event, 0, 2)}></button>
-                <button id="tic-tac-toe-(1, 0)" onClick={(event) => updateBoard(event, 1, 0)}></button>
-                <button id="tic-tac-toe-(1, 1)" onClick={(event) => updateBoard(event, 1, 1)}></button>
-                <button id="tic-tac-toe-(1, 2)" onClick={(event) => updateBoard(event, 1, 2)}></button>
-                <button id="tic-tac-toe-(2, 0)" onClick={(event) => updateBoard(event, 2, 0)}></button>
-                <button id="tic-tac-toe-(2, 1)" onClick={(event) => updateBoard(event, 2, 1)}></button>
-                <button id="tic-tac-toe-(2, 2)" onClick={(event) => updateBoard(event, 2, 2)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(0, 0)" onClick={(event) => updateBoard(event, 0, 0)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(0, 1)" onClick={(event) => updateBoard(event, 0, 1)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(0, 2)" onClick={(event) => updateBoard(event, 0, 2)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(1, 0)" onClick={(event) => updateBoard(event, 1, 0)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(1, 1)" onClick={(event) => updateBoard(event, 1, 1)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(1, 2)" onClick={(event) => updateBoard(event, 1, 2)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(2, 0)" onClick={(event) => updateBoard(event, 2, 0)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(2, 1)" onClick={(event) => updateBoard(event, 2, 1)}></button>
+                <button className="tic-tac-toe-square" id="tic-tac-toe-(2, 2)" onClick={(event) => updateBoard(event, 2, 2)}></button>
             </div>
         </div>
     );
@@ -84,14 +84,14 @@ function TicTacToe() {
     return (
         <div className="page">
             <h1 className="normal-text">Bowser Tic Tac Toe</h1>
-            <h2 id="game-over-screen"></h2>
+            <h3 id="game-over-screen">Game in progress...</h3>
             <Board boardType={boardType} setBoardType={setBoardType} ></Board>
             <div className="selection">
                 <button onClick={() => BoardSwitcher("normal", {boardType, setBoardType})}>Normal</button>
                 <button onClick={() => BoardSwitcher("neon", {boardType, setBoardType})}>Neon</button>
                 <button onClick={() => BoardSwitcher("shell", {boardType, setBoardType})}>Shell</button>
             </div>
-            <br></br>
+            <br></br><br></br>
         </div>
     );
 };

@@ -6,10 +6,10 @@
 .container {
   display: grid;
   grid-template-columns: auto auto auto;
-  padding: 40px;
+  padding: 15px;
 }
 .container > button {
-  background-color: #8d8102;
+  background-color: #454435;
   border: 1px solid black;
   padding: 40px;
   margin: 2px;
@@ -18,7 +18,7 @@
 }
 
 .container > button:active {
-    background-color: #7d7202;
+    background-color: #615f44;
 }
 
 .normal-text {
@@ -28,4 +28,9 @@
 .selection > button {
     margin-right: 8px;
     background-color: #908d82;
+}
+
+.tic-tac-toe-square {
+  width: 140px;
+  height: 140px;
 }
