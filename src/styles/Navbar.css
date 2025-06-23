@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 5px;
+
+
+    background-color: rgb(142, 135, 135);
+    width: 850px;
+    color: black;
+    font-size: 18px;
+}
+
+.navbar-middle {
+  display: flex;
+  width: 650px;
+  margin-left: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar-inside {
+  display: flex;
+  margin-left: 20px;
+  text-align: center;
+}
